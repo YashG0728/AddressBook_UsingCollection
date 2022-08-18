@@ -1,16 +1,15 @@
 package UC1;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Scanner;
 
 public class AddressBookMain {
-
 	public static void main(String[] args) {
 		//here i am creating instance of collection
-		List<PersonInfo> c = new ArrayList<>();
+        List<PersonInfo> c = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         int choice;
         //DO-WHILE LOOP GOR CHECKING INPUT ITS !=(NOT EQUAL TOO) 0
@@ -19,9 +18,12 @@ public class AddressBookMain {
             //PROVIDE MENU
             System.out.println("1.INSERT");
             System.out.println("2.DISPLAY");
+            System.out.println("5.EDIT");
+            System.out.println("ENTER YOUR CHOICE : ");
             choice = sc.nextInt();
 
-            switch (choice) {
+            boolean found;
+			switch (choice) {
                 case 1: //Insert details
                     System.out.println("Enter Num : ");
                     int Num = sc.nextInt();
@@ -54,11 +56,48 @@ public class AddressBookMain {
                     }
                     System.out.println("------------------------------------------");
                     break;
+                case 3: //For update
+                    found = false;
+                    System.out.println("Enter num to update : ");
+                    Num = sc.nextInt();
+                    System.out.println("------------------------------------------");
+                    ListIterator<PersonInfo> li = c.listIterator(); //iterator used to return every record one by one
+                    while (li.hasNext()) {
+                        PersonInfo e = li.next();
+                        if (e.getNum() == Num) {
+                            System.out.println("Edit Num Name : ");
+                            Num = sc.nextInt();
+                            String empty1 = sc.nextLine();
+                            System.out.println("Edit First Name : ");
+                            firstName = sc.nextLine();
+                            System.out.println("Edit Last Name ; ");
+                            lastName = sc.nextLine();
+                            System.out.println("Edit Address Name ; ");
+                            address = sc.nextLine();
+                            System.out.println("Edit city Name ; ");
+                            city = sc.nextLine();
+                            System.out.println("Edit state Name ; ");
+                            state = sc.nextLine();
+                            System.out.println("Edit email Name ; ");
+                            String emailID = sc.nextLine();
+                            System.out.println("Edit phoneNumber Name ; ");
+                            phoneNumber = sc.nextLong();
+                            System.out.println("Edit ZIP ; ");
+                            zip = sc.nextLong();
+                            li.set(new PersonInfo(Num, firstName, lastName, address, city, state, emailID, phoneNumber, zip));
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        System.out.println("Record Not Found");
+                    } else {
+                        System.out.println("record is Edited successfully...!");
+                    }
+                    System.out.println("------------------------------------------");
+                    break;
             }
         } while (choice != 0);
     }
-}
-
-
-
+}	
+		        
 	

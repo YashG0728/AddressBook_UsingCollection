@@ -1,5 +1,4 @@
 package UC1;
-
 import java.util.*;
 
 class PersonInfo {
