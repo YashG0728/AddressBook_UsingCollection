@@ -1,14 +1,13 @@
-package UC1;
+package UC3;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
-
 public class AddressBookMain {
-	public static void main(String[] args) {
-		//here i am creating instance of collection
+    public static void main(String[] args) {
+        //here i am creating instance of collection
         List<PersonInfo> c = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -18,7 +17,8 @@ public class AddressBookMain {
             //PROVIDE MENU
             System.out.println("1.INSERT");
             System.out.println("2.DISPLAY");
-            System.out.println("5.EDIT");
+            System.out.println("3.DELETE");
+            System.out.println("4.EDIT");
             System.out.println("ENTER YOUR CHOICE : ");
             choice = sc.nextInt();
 
@@ -56,7 +56,29 @@ public class AddressBookMain {
                     }
                     System.out.println("------------------------------------------");
                     break;
-                case 3: //For update
+
+                case 3: //For deleting
+                    found = false;
+                    System.out.println("Enter num to delete : ");
+                    Num = sc.nextInt();
+                    System.out.println("------------------------------------------");
+                    i = c.iterator(); //iterator used to return every record one by one
+                    while (i.hasNext()) {
+                        PersonInfo e = i.next();
+                        if (e.getNum() == Num) {
+                            i.remove();
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        System.out.println("Record Not Found");
+                    } else {
+                        System.out.println("record is deleted succesfully...!");
+                    }
+                    System.out.println("------------------------------------------");
+                    break;
+
+                case 4: //For update
                     found = false;
                     System.out.println("Enter num to update : ");
                     Num = sc.nextInt();
@@ -98,6 +120,4 @@ public class AddressBookMain {
             }
         } while (choice != 0);
     }
-}	
-		        
-	
+}

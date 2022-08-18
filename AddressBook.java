@@ -1,5 +1,4 @@
-package UC1;
-import java.util.*;
+package UC3;
 
 class PersonInfo {
     private int Num;
@@ -101,3 +100,5 @@ class PersonInfo {
                 '}';
     }
 }
+
+	
