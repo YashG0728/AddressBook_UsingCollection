@@ -1,5 +1,5 @@
-package UC3;
-
+package UC1;
+import java.util.*;
 class PersonInfo {
     private int Num;
     private String firstName, lastName, address, city, state, emailID;
